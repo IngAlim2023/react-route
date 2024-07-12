@@ -1,0 +1,77 @@
+3 formas de crear un proyecto en react:
+1) con Vite
+	Es mucho más rápida y sencilla de utilizar:
+	*npm créate vite@latest
+	le damos el nombre al proyecto 
+	con cd entramos a la carpeta
+	*npm install
+	*npm run dev
+
+Rutas en Vite
+	instalamos la librería router 
+	* npm install react-router-dom
+	en src creamos la carpeta pages (ahí creamos las paginas que necesites)( ejemplo: Pagina.jsx).
+	en pagina.jsx (
+		const Pagina = () =>{
+			return <h1>Pagina</h1>} 
+			export default Pagina
+	)
+	vamos al archivo main.jsx y importamos router
+	import  {BrowserRouter}  from 'react-router-dom';
+	la etiqueta <App /> la envolvemos así:
+	<BrowserRouter>
+      		<App />
+    	</BrowserRouter>
+	En nuestro componente App.jsx solo dejamos el div padre:
+	
+	import './App.css';
+	function App() {
+  
+  	return (
+    
+    		<div>
+      
+   		</div>
+    
+  		)
+	}
+
+	export default App
+
+	En pages: creamos el archivo Layout.jsx, en este:
+
+	import { Outlet, Link } from "react-router-dom";
+
+	const Layout = () =>{
+    		return <div>
+	        <div>
+	            <link to="/">Home</link>              Según las paginas que tengamos
+	            <link to="/default">D</link> 
+	            <link to="/about">About</link>
+	        </div>
+	        <hr />
+	        <Outlet/>                    importante: donde se renderizan nuestras paginas
+	    </div>
+	}
+	export default Layout;
+
+En App.jsx importamos 
+	import { Routes, Route } from "react-router-dom";
+	import Layout from "./pages/Layout";
+
+	function App() {
+  
+	  return (
+    
+	    <div>
+	      <h1>Rutas</h1>
+	      <Routes>
+	        <Route path='/' element={<Layout />}>
+	       </Route>
+	      </Routes>      
+	    </div>
+    
+	  )
+	}
+
+	export default App
