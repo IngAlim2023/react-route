@@ -1,4 +1,4 @@
-3 formas de crear un proyecto en react:
+proyecto en react:
 1) con Vite
 	Es mucho más rápida y sencilla de utilizar:
 	*npm créate vite@latest
@@ -56,22 +56,29 @@ Rutas en Vite
 	export default Layout;
 
 En App.jsx importamos 
+	import './App.css';
 	import { Routes, Route } from "react-router-dom";
 	import Layout from "./pages/Layout";
+	import Home from "./pages/Home";
+	import Default from "./pages/Default";
+	import About from "./pages/About";
 
 	function App() {
-  
-	  return (
-    
-	    <div>
-	      <h1>Rutas</h1>
-	      <Routes>
-	        <Route path='/' element={<Layout />}>
-	       </Route>
-	      </Routes>      
-	    </div>
-    
-	  )
-	}
+	
+	return (
+		
+		<div>
+		<h1>Rutas</h1>
+		<Routes>
+			<Route path='/' element={<Layout />}>
+			<Route path='/' element={<Home />}/>
+			<Route path='*' element={<Default />}/>
+			<Route path='/about' element={<About />}/>
+			</Route>
+		</Routes>      
+		</div>
+		
+	)
+}
 
-	export default App
+export default App
